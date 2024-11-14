@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, X, Search } from 'lucide-react';
+import SearchBar from '../Components/SearchBar'
 
 export default function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -17,14 +18,9 @@ export default function NavBar() {
     <div className="bg-dark-gray text-white flex items-center justify-between p-4 relative">
       {/* Conditional Rendering for Navbar or SearchBar */}
       {searchOpen ? (
-        // Full-width SearchBar covering the Navbar
+        // Full-width SearchBar covering the Navbar "flex-grow p-2 bg-gray-800 text-white rounded-lg outline-none"
         <div className="flex items-center w-full bg-dark-gray">
-          <input
-            type="text"
-            placeholder="Search for places..."
-            className="flex-grow p-2 bg-gray-800 text-white rounded-lg outline-none"
-            autoFocus
-          />
+          <SearchBar className='flex-grow p-2 bg-gray-800 text-white rounded-lg outline-none'/>
           <X className="ml-2 cursor-pointer" size={24} onClick={toggleSearch} />
         </div>
       ) : (
