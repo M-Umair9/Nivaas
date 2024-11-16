@@ -18,9 +18,9 @@ export default function NavBar() {
     <div className="bg-dark-gray text-white flex items-center justify-between p-4 relative">
       {/* Conditional Rendering for Navbar or SearchBar */}
       {searchOpen ? (
-        // Full-width SearchBar covering the Navbar "flex-grow p-2 bg-gray-800 text-white rounded-lg outline-none"
+        // Full-width SearchBar covering the Navbar 
         <div className="flex items-center w-full bg-dark-gray">
-          <SearchBar className='flex-grow p-2 bg-gray-800 text-white rounded-lg outline-none'/>
+          <SearchBar className='flex-grow  p-1 bg-gray-800 text-white rounded-lg outline-none'/>
           <X className="ml-2 cursor-pointer" size={24} onClick={toggleSearch} />
         </div>
       ) : (
@@ -32,7 +32,7 @@ export default function NavBar() {
 
           {/* Centered Title */}
           <p className="text-xl font-bold absolute left-1/2 transform -translate-x-1/2">
-            Nivaas
+            NIVAAS
           </p>
 
           {/* Search Icon on the right side */}
