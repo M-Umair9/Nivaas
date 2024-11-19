@@ -1,0 +1,42 @@
+{
+  "login": [
+    {
+      "id": "1",
+      "email": "someone@gmail.com",
+      "password": 1234568
+    },
+    {
+      "id": "2",
+      "name": "Luxury Villa",
+      "price": 3000
+    },
+    {
+      "id": "4eb1",
+      "email": "umair@gmail.com",
+      "password": "1234mmm"
+    }
+  ],
+  "signup": [
+    {
+      "id": "1",
+      "name": "umair",
+      "email": "ch.umair111353@gmail.com",
+      "phone": "03037171795",
+      "password": "umair111353"
+    },
+    {
+      "id": "ab2c",
+      "name": "umairch",
+      "email": "ch.umair53@gmail.com",
+      "phone": "03037171795",
+      "password": "umair@123"
+    },
+    {
+      "id": "a442",
+      "name": "umair",
+      "email": "ch.umair111353@gmail.com",
+      "phone": "03037171795",
+      "password": "umair@123"
+    }
+  ]
+}
