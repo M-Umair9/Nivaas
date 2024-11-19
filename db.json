@@ -1,19 +1,11 @@
 {
-  "login": [
+  "users": [
     {
-      "id": "1",
-      "email": "someone@gmail.com",
-      "password": 1234568
-    },
-    {
-      "id": "2",
-      "name": "Luxury Villa",
-      "price": 3000
-    },
-    {
-      "id": "4eb1",
-      "email": "umair@gmail.com",
-      "password": "1234mmm"
+      "id": 1,
+      "name": "umair",
+      "email": "umair@example.com",
+      "phone": "1234567890",
+      "password": "password123"
     }
   ],
   "signup": [

@@ -13,17 +13,13 @@ export default function Signin() {
   const [authError, setAuthError] = useState("");
   const navigate = useNavigate();
 
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
+  const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-  const validatePassword = (password) => {
-    return password.length >= 6; // Example: Password should be at least 6 characters
-  };
+  const validatePassword = (password) => password.length >= 6;
 
-  const handleSignup = async (e) => {
+  const handleSignin = async (e) => {
     e.preventDefault(); // Prevent form from refreshing the page
+    setAuthError(""); // Reset authentication error
 
     let isValid = true;
 
@@ -43,27 +39,25 @@ export default function Signin() {
 
     if (isValid) {
       try {
-        const response = await fetch("http://localhost:8000/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, password }),
-        });
+        // Fetch users from db.json
+        const response = await fetch("http://localhost:8000/users");
+        if (!response.ok) throw new Error("Failed to fetch users.");
+        const users = await response.json();
 
-        if (!response.ok) {
-          throw new Error(
-            "Authentication failed. Please check your credentials."
-          );
+        // Check if user exists with matching email and password
+        const user = users.find(
+          (u) => u.email === email && u.password === password
+        );
+
+        if (user) {
+          console.log("Login successful:", user);
+          navigate("/"); // Redirect to the home page
+        } else {
+          setAuthError("Invalid email or password.");
         }
-
-        const data = await response.json();
-
-        // Assuming success means navigating to the home page
-        console.log("Login successful:", data);
-        navigate("/");
       } catch (error) {
-        setAuthError(error.message);
+        console.error("Error during sign-in:", error);
+        setAuthError("Failed to connect to the server.");
       }
     }
   };
@@ -72,7 +66,7 @@ export default function Signin() {
     <div className="bg-dark-gray min-h-screen flex items-center justify-center">
       <form
         className="bg-dark-gray w-full max-w-md p-8 space-y-6"
-        onSubmit={handleSignup}
+        onSubmit={handleSignin}
       >
         <h2 className="text-white text-2xl font-semibold">Sign In</h2>
 
