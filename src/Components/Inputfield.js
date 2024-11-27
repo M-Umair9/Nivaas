@@ -1,6 +1,12 @@
-export default function Inputfield({ type , placeholder, value, onChange,error }) {
-    return (
-      <div className="w-full mb-4">
+export default function Inputfield({
+  type,
+  placeholder,
+  value,
+  onChange,
+  error,
+}) {
+  return (
+    <div className="w-full mb-4">
       <input
         type={type}
         placeholder={placeholder}
@@ -10,6 +16,5 @@ export default function Inputfield({ type , placeholder, value, onChange,error }
       />
       {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
     </div>
-    )
-  }
-  
+  );
+}

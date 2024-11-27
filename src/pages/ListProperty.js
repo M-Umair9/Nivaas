@@ -3,6 +3,7 @@ import Button from "../Components/Button";
 import PriceInput from "../Components/PriceInput";
 import TypeSelector from "../Components/TypeSelector";
 import Dropdown from "../Components/DropDown";
+import ImagePicker from "../Components/ImagePicker";
 
 const ListProperty = () => {
   const [price, setPrice] = useState("");
@@ -12,6 +13,7 @@ const ListProperty = () => {
   const [petPolicy, setPetPolicy] = useState("");
   const [details, setDetails] = useState("");
   const [error, setError] = useState("");
+  const [images, setImages] = useState([]);
 
   // Function to validate input
   const validatePrice = (value) => {
@@ -23,6 +25,11 @@ const ListProperty = () => {
     } else {
       setError("Price must be an integer!");
     }
+  };
+
+  // Handle image uploads
+  const handleImageUpload = (uploadedImages) => {
+    setImages(uploadedImages); // Store the uploaded image URLs or base64
   };
 
   const handleSubmit = async (e) => {
@@ -40,6 +47,7 @@ const ListProperty = () => {
       bathrooms,
       petPolicy,
       details,
+      images,
     };
 
     try {
@@ -61,6 +69,7 @@ const ListProperty = () => {
         setBathrooms("");
         setPetPolicy("");
         setDetails("");
+        setImages([]);
       } else {
         setError("Failed to submit property. Please try again.");
       }
@@ -125,6 +134,7 @@ const ListProperty = () => {
           onChange={setDetails}
           value={details}
         />
+        <ImagePicker onImageUpload={handleImageUpload} />
 
         <Button type="submit" text="List Property" />
       </form>
