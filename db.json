@@ -33,60 +33,6 @@
   ],
   "properties": [
     {
-      "id": "1",
-      "price": 1200,
-      "type": "Apartment",
-      "bedrooms": "2",
-      "bathrooms": "1",
-      "petPolicy": "Dogs Allowed",
-      "details": "example@example.com"
-    },
-    {
-      "id": "0425",
-      "price": 222,
-      "type": "Apartment",
-      "bedrooms": "1",
-      "bathrooms": "3",
-      "petPolicy": "Not Allowed",
-      "details": "dwdw"
-    },
-    {
-      "id": "bf27",
-      "price": 323,
-      "type": "Apartment",
-      "bedrooms": "Studio",
-      "bathrooms": "2",
-      "petPolicy": "Dogs Allowed",
-      "details": "ghvgh"
-    },
-    {
-      "id": "a260",
-      "price": 32378,
-      "type": "Apartment",
-      "bedrooms": "Studio",
-      "bathrooms": "1",
-      "petPolicy": "Dogs Allowed",
-      "details": ""
-    },
-    {
-      "id": "d7c2",
-      "price": 7800,
-      "type": "Room",
-      "bedrooms": "1",
-      "bathrooms": "1",
-      "petPolicy": "Cats Allowed",
-      "details": "hvjhhjbhj"
-    },
-    {
-      "id": "bd0d",
-      "price": 467,
-      "type": "Townhouse",
-      "bedrooms": "4",
-      "bathrooms": "3",
-      "petPolicy": "Pets Allowed",
-      "details": ""
-    },
-    {
       "id": "8164",
       "price": 232,
       "type": "Townhouse",
@@ -104,6 +50,58 @@
       "petPolicy": "Cats Allowed",
       "details": "details",
       "images": []
+    },
+    {
+      "id": "7b4b",
+      "price": "456",
+      "type": "House",
+      "bedrooms": "2",
+      "bathrooms": "3",
+      "petPolicy": "Dogs Allowed",
+      "details": "dtrvggv",
+      "images": [
+        {},
+        {}
+      ]
+    },
+    {
+      "id": "e10e",
+      "price": "456",
+      "type": "House",
+      "bedrooms": "2",
+      "bathrooms": "3",
+      "petPolicy": "Dogs Allowed",
+      "details": "dtrvggv",
+      "images": [
+        {},
+        {}
+      ]
+    },
+    {
+      "id": "f0c7",
+      "price": "456",
+      "type": "House",
+      "bedrooms": "2",
+      "bathrooms": "3",
+      "petPolicy": "Dogs Allowed",
+      "details": "dtrvggv",
+      "images": [
+        {},
+        {}
+      ]
+    },
+    {
+      "id": "59b7",
+      "price": "5678",
+      "type": "Apartment",
+      "bedrooms": "Studio",
+      "bathrooms": "2",
+      "petPolicy": "Not Allowed",
+      "details": "vvvvgvhgvh",
+      "images": [
+        {},
+        {}
+      ]
     }
   ]
 }

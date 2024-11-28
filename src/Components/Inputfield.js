@@ -12,7 +12,7 @@ export default function Inputfield({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        className="w-full p-2 border border-gray-600 rounded-md bg-dark-gray text-white placeholder-gray-400 focus:outline-none focus:border-gray-500"
+        className="w-full p-2 border border-gray-600 rounded-md bg-dark-grey text-white placeholder-gray-400 focus:outline-none focus:border-gray-500"
       />
       {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
     </div>

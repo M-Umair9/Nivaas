@@ -63,9 +63,9 @@ export default function Signin() {
   };
 
   return (
-    <div className="bg-dark-gray min-h-screen flex items-center justify-center">
+    <div className="bg-dark-grey min-h-screen flex items-center justify-center">
       <form
-        className="bg-dark-gray w-full max-w-md p-8 space-y-6"
+        className="bg-dark-grey w-full max-w-md p-8 space-y-6"
         onSubmit={handleSignin}
       >
         <h2 className="text-white text-2xl font-semibold">Sign In</h2>

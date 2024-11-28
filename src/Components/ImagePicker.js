@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 
-const ImagePicker = () => {
+const ImagePicker = ({ onImagesSelected }) => {
   const [images, setImages] = useState([]);
 
   const handleImageChange = (e) => {
-    const files = Array.from(e.target.files); // Convert FileList to Array
+    // Convert FileList to Array
+    const files = Array.from(e.target.files);
     const imageUrls = files.map((file) => URL.createObjectURL(file)); // Create URLs for preview
     setImages(imageUrls);
+    // Pass files back to the parent
+    onImagesSelected(files);
   };
 
   return (

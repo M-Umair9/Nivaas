@@ -4,6 +4,7 @@ import PriceInput from "../Components/PriceInput";
 import TypeSelector from "../Components/TypeSelector";
 import Dropdown from "../Components/DropDown";
 import ImagePicker from "../Components/ImagePicker";
+import axios from "axios";
 
 const ListProperty = () => {
   const [price, setPrice] = useState("");
@@ -33,36 +34,40 @@ const ListProperty = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form behavior
+    e.preventDefault();
 
     if (!price || !type || !bedrooms || !bathrooms || !petPolicy) {
       setError("Please fill out all fields!");
       return;
     }
 
-    const property = {
-      price: parseInt(price, 10),
-      type,
-      bedrooms,
-      bathrooms,
-      petPolicy,
-      details,
-      images,
-    };
+    const formData = new FormData();
+    formData.append("price", parseInt(price, 10));
+    formData.append("type", type);
+    formData.append("bedrooms", bedrooms);
+    formData.append("bathrooms", bathrooms);
+    formData.append("petPolicy", petPolicy);
+    formData.append("details", details);
+
+    images.forEach((image) => {
+      formData.append("images", image); // Ensure images are File objects
+    });
 
     try {
-      const response = await fetch("http://localhost:8000/properties", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(property),
-      });
+      const response = await axios.post(
+        "http://localhost:8000/properties", // Corrected URL
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-      if (response.ok) {
-        console.log("Property submitted successfully:", property);
-        setError(""); // Clear errors on success
-        // Optionally, clear form fields
+      if (response.status === 200) {
+        console.log("Property submitted successfully:", response.data);
+        setError("");
+        // Reset form fields
         setPrice("");
         setType("");
         setBedrooms("");
@@ -74,15 +79,22 @@ const ListProperty = () => {
         setError("Failed to submit property. Please try again.");
       }
     } catch (err) {
-      setError("An error occurred while submitting the property.");
-      console.error(err);
+      if (err.response) {
+        setError(
+          `Server Error: ${err.response.data.message || "Unknown error"}`
+        );
+        console.error("Error Response:", err.response.data);
+      } else {
+        setError("An error occurred while submitting the property.");
+        console.error(err.message);
+      }
     }
   };
 
   return (
-    <div className="bg-dark-grey p-6 text-white min-h-screen flex items-center justify-center">
+    <div className="bg-dark-grey p-6 text-white min-h-screen flex items-center justify-center ">
       <form
-        className="w-full max-w-lg bg-customDark p-6 rounded-lg shadow-lg"
+        className="w-full max-w-lg bg-customDark p-6 rounded-lg shadow-lg md:w-3/4 lg:w-1/2 max-w-lg "
         onSubmit={handleSubmit}
       >
         <h1 className="text-2xl mb-6 text-center font-bold">Add Details</h1>
@@ -124,7 +136,7 @@ const ListProperty = () => {
             "Cats Allowed",
             "Not Allowed",
           ]}
-          //selectedOption={petPolicy}
+          // selectedOption={petPolicy}
           onSelect={setPetPolicy}
         />
 
@@ -134,7 +146,7 @@ const ListProperty = () => {
           onChange={setDetails}
           value={details}
         />
-        <ImagePicker onImageUpload={handleImageUpload} />
+        <ImagePicker onImagesSelected={handleImageUpload} />
 
         <Button type="submit" text="List Property" />
       </form>
