@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Menu, X, Search } from 'lucide-react';
-import SearchBar from '../Components/SearchBar'
+import React, { useState } from "react";
+import { Menu, X, Search } from "lucide-react";
+import SearchBar from "../Components/SearchBar";
 
 export default function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -18,9 +18,9 @@ export default function NavBar() {
     <div className="bg-dark-gray text-white flex items-center justify-between p-4 relative">
       {/* Conditional Rendering for Navbar or SearchBar */}
       {searchOpen ? (
-        // Full-width SearchBar covering the Navbar 
+        // Full-width SearchBar covering the Navbar
         <div className="flex items-center w-full bg-dark-gray">
-          <SearchBar className='flex-grow  p-1 bg-gray-800 text-white rounded-lg outline-none'/>
+          <SearchBar className="flex-grow  p-1 bg-gray-800 text-white rounded-lg outline-none" />
           <X className="ml-2 cursor-pointer" size={24} onClick={toggleSearch} />
         </div>
       ) : (
@@ -45,19 +45,39 @@ export default function NavBar() {
       {/* Dropdown Menu */}
       {menuOpen && (
         <div className="absolute top-full left-0 w-full bg-gray-800 text-white flex flex-col items-start p-4 space-y-2 z-10">
-          <a href="/list-property" className="w-full py-2 px-4 hover:bg-gray-700" onClick={toggleMenu}>
+          <a
+            href="/ListProperty"
+            className="w-full py-2 px-4 hover:bg-gray-700"
+            onClick={toggleMenu}
+          >
             List a Property
           </a>
-          <a href="/Signin" className="w-full py-2 px-4 hover:bg-gray-700" onClick={toggleMenu}>
+          <a
+            href="/Signin"
+            className="w-full py-2 px-4 hover:bg-gray-700"
+            onClick={toggleMenu}
+          >
             SignIn
           </a>
-          <a href="/signup" className="w-full py-2 px-4 hover:bg-gray-700" onClick={toggleMenu}>
+          <a
+            href="/signup"
+            className="w-full py-2 px-4 hover:bg-gray-700"
+            onClick={toggleMenu}
+          >
             Signup
           </a>
-          <a href="/payments" className="w-full py-2 px-4 hover:bg-gray-700" onClick={toggleMenu}>
+          <a
+            href="/Payment"
+            className="w-full py-2 px-4 hover:bg-gray-700"
+            onClick={toggleMenu}
+          >
             Payments
           </a>
-          <a href="/screening" className="w-full py-2 px-4 hover:bg-gray-700" onClick={toggleMenu}>
+          <a
+            href="/Screening"
+            className="w-full py-2 px-4 hover:bg-gray-700"
+            onClick={toggleMenu}
+          >
             Screening
           </a>
         </div>
