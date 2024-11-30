@@ -33,75 +33,60 @@
   ],
   "properties": [
     {
-      "id": "8164",
-      "price": 232,
-      "type": "Townhouse",
-      "bedrooms": "2",
-      "bathrooms": "2",
-      "petPolicy": "Not Allowed",
-      "details": "some details"
-    },
-    {
-      "id": "9cd0",
-      "price": 333,
-      "type": "Apartment",
+      "id": "c84b",
+      "price": "222",
+      "type": "House",
       "bedrooms": "1",
       "bathrooms": "2",
-      "petPolicy": "Cats Allowed",
-      "details": "details",
-      "images": []
-    },
-    {
-      "id": "7b4b",
-      "price": "456",
-      "type": "House",
-      "bedrooms": "2",
-      "bathrooms": "3",
       "petPolicy": "Dogs Allowed",
-      "details": "dtrvggv",
-      "images": [
-        {},
-        {}
-      ]
+      "details": "some Deials are added Here!",
+      "images": {}
     },
     {
-      "id": "e10e",
-      "price": "456",
-      "type": "House",
-      "bedrooms": "2",
-      "bathrooms": "3",
-      "petPolicy": "Dogs Allowed",
-      "details": "dtrvggv",
-      "images": [
-        {},
-        {}
-      ]
-    },
-    {
-      "id": "f0c7",
-      "price": "456",
-      "type": "House",
-      "bedrooms": "2",
-      "bathrooms": "3",
-      "petPolicy": "Dogs Allowed",
-      "details": "dtrvggv",
-      "images": [
-        {},
-        {}
-      ]
-    },
-    {
-      "id": "59b7",
-      "price": "5678",
+      "id": "628a",
+      "price": "333",
       "type": "Apartment",
       "bedrooms": "Studio",
       "bathrooms": "2",
-      "petPolicy": "Not Allowed",
-      "details": "vvvvgvhgvh",
+      "petPolicy": "Dogs Allowed",
+      "details": "deatails are added here",
+      "images": {}
+    },
+    {
+      "id": "a101",
+      "price": "444",
+      "type": "Apartment",
+      "bedrooms": "Studio",
+      "bathrooms": "2",
+      "petPolicy": "Dogs Allowed",
+      "details": "hvvgvtyvgv",
       "images": [
-        {},
-        {}
+        "blob:http://localhost:3000/ebdd5887-1d73-4ff9-8aa3-dc519051e14d",
+        "blob:http://localhost:3000/ed1d0fec-eaa7-405f-9452-00ad115caae1"
       ]
+    },
+    {
+      "id": "e9e0",
+      "price": "444",
+      "type": "Apartment",
+      "bedrooms": "Studio",
+      "bathrooms": "2",
+      "petPolicy": "Dogs Allowed",
+      "details": "hvvgvtyvgv",
+      "images": [
+        "blob:http://localhost:3000/ebdd5887-1d73-4ff9-8aa3-dc519051e14d",
+        "blob:http://localhost:3000/ed1d0fec-eaa7-405f-9452-00ad115caae1"
+      ]
+    },
+    {
+      "id": "8979",
+      "price": "444",
+      "type": "Apartment",
+      "bedrooms": "Studio",
+      "bathrooms": "2",
+      "petPolicy": "Dogs Allowed",
+      "details": "hvvgvtyvgv",
+      "images": "blob:http://localhost:3000/88e0e32b-83d1-474c-965d-14689de61494"
     }
   ]
 }

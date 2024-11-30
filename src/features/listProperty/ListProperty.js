@@ -1,43 +1,59 @@
-import React, { useState } from "react";
-import Button from "../Components/Button";
-import PriceInput from "../Components/PriceInput";
-import TypeSelector from "../Components/TypeSelector";
-import Dropdown from "../Components/DropDown";
-import ImagePicker from "../Components/ImagePicker";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  setPrice,
+  setType,
+  setBedrooms,
+  setBathrooms,
+  setPetPolicy,
+  setDetails,
+  setImages,
+  setError,
+  resetForm,
+} from "../listProperty/ListSlice";
+import Button from "../../Components/Button";
+import PriceInput from "../../Components/PriceInput";
+import TypeSelector from "../../Components/TypeSelector";
+import Dropdown from "../../Components/DropDown";
+import ImagePicker from "../../Components/ImagePicker";
 import axios from "axios";
 
 const ListProperty = () => {
-  const [price, setPrice] = useState("");
-  const [type, setType] = useState("");
-  const [bedrooms, setBedrooms] = useState("");
-  const [bathrooms, setBathrooms] = useState("");
-  const [petPolicy, setPetPolicy] = useState("");
-  const [details, setDetails] = useState("");
-  const [error, setError] = useState("");
-  const [images, setImages] = useState([]);
+  const dispatch = useDispatch();
+  const {
+    price,
+    type,
+    bedrooms,
+    bathrooms,
+    petPolicy,
+    details,
+    images,
+    error,
+  } = useSelector((state) => state.property);
 
   // Function to validate input
   const validatePrice = (value) => {
     // Only allow integers
     const regex = /^[0-9]*$/;
     if (regex.test(value)) {
-      setError("");
-      setPrice(value); // Update state if valid
+      dispatch(setError(""));
+      dispatch(setPrice(value)); // Update state if valid
     } else {
-      setError("Price must be an integer!");
+      dispatch(setError("Price must be an integer!"));
     }
   };
 
   // Handle image uploads
   const handleImageUpload = (uploadedImages) => {
-    setImages(uploadedImages); // Store the uploaded image URLs or base64
+    const imageUrls = uploadedImages.map((file) => URL.createObjectURL(file));
+    dispatch(setImages(imageUrls)); // Store the uploaded image URLs or base64
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!price || !type || !bedrooms || !bathrooms || !petPolicy) {
-      setError("Please fill out all fields!");
+      dispatch(setError("Please fill out all fields!"));
       return;
     }
 
@@ -68,28 +84,28 @@ const ListProperty = () => {
         console.log("Property submitted successfully:", response.data);
         setError("");
         // Reset form fields
-        setPrice("");
-        setType("");
-        setBedrooms("");
-        setBathrooms("");
-        setPetPolicy("");
-        setDetails("");
-        setImages([]);
+        dispatch(resetForm());
       } else {
-        setError("Failed to submit property. Please try again.");
+        dispatch(setError("Failed to submit property. Please try again."));
       }
     } catch (err) {
       if (err.response) {
-        setError(
-          `Server Error: ${err.response.data.message || "Unknown error"}`
+        dispatch(
+          setError(
+            `Server Error: ${err.response.data.message || "Unknown error"}`
+          )
         );
-        console.error("Error Response:", err.response.data);
       } else {
-        setError("An error occurred while submitting the property.");
-        console.error(err.message);
+        dispatch(setError("An error occurred while submitting the property."));
       }
     }
   };
+  // Cleanup URLs when component unmounts
+  useEffect(() => {
+    return () => {
+      images.forEach((url) => URL.revokeObjectURL(url));
+    };
+  }, [images]);
 
   return (
     <div className="bg-dark-grey p-6 text-white min-h-screen flex items-center justify-center ">
@@ -111,21 +127,21 @@ const ListProperty = () => {
           label="Type"
           options={["Apartment", "House", "Townhouse", "Duplex", "Room"]}
           selectedOption={type}
-          onSelect={setType}
+          onSelect={(val) => dispatch(setType(val))}
         />
         {/*bedrooms Field */}
         <TypeSelector
           label="Bedrooms"
           options={["Studio", "1", "2", "3", "4", "5+"]}
           selectedOption={bedrooms}
-          onSelect={setBedrooms}
+          onSelect={(val) => dispatch(setBedrooms(val))}
         />
         {/*bathrooms Field */}
         <TypeSelector
           label="Bathrooms"
           options={["1", "2", "3"]}
           selectedOption={bathrooms}
-          onSelect={setBathrooms}
+          onSelect={(val) => dispatch(setBathrooms(val))}
         />
         {/*dropdown menu */}
         <Dropdown
@@ -137,13 +153,13 @@ const ListProperty = () => {
             "Not Allowed",
           ]}
           // selectedOption={petPolicy}
-          onSelect={setPetPolicy}
+          onSelect={(val) => dispatch(setPetPolicy(val))}
         />
 
         <PriceInput
           label="Details"
           placeholder="Enter Details"
-          onChange={setDetails}
+          onChange={(val) => dispatch(setDetails(val))}
           value={details}
         />
         <ImagePicker onImagesSelected={handleImageUpload} />
