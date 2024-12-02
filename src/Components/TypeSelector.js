@@ -1,7 +1,7 @@
 const TypeSelector = ({ options, selectedOption, onSelect, label }) => (
   <div className="mb-4">
     <label className="block text-white mb-2">{label}</label>
-    <div className="flex gap-2">
+    <div className="flex gap-2 flex-wrap">
       {options.map((option) => (
         <button
           key={option}
